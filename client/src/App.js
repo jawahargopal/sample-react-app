@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch
+} from "react-router-dom";
 import "./App.css";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
@@ -12,7 +17,9 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Login}>
+          <Redirect to="/login" />
+        </Route>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
